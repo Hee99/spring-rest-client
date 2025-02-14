@@ -18,20 +18,7 @@ public class WebClientConfig {
         return WebClient
                 .builder()
                 .baseUrl("https://dummyjson.com/")
-                .filter(errorHandler())
                 .build();
-    }
-
-    private ExchangeFilterFunction errorHandler() {
-        return ExchangeFilterFunction.ofResponseProcessor(clientResponse -> {
-            if (clientResponse.statusCode().is4xxClientError() || clientResponse.statusCode().is5xxServerError()) {
-                return clientResponse.bodyToMono(String.class)
-                        .flatMap(errorBody -> Mono.error(new ResponseStatusException(
-                                HttpStatus.valueOf(clientResponse.statusCode().value()),
-                                errorBody)));
-            }
-            return Mono.just(clientResponse);
-        });
     }
 
 }
