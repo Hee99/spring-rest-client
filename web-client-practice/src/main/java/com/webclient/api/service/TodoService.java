@@ -7,7 +7,9 @@ import com.webclient.config.TodoApiClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +19,9 @@ public class TodoService {
 
     public List<TodoDto> getAllTodos() {
         TodoResponseDto responseDto = todoApiClient.sendGet("/todos", TodoResponseDto.class);
-        return responseDto.getTodos();
+        return Optional.ofNullable(responseDto)
+                .map(TodoResponseDto::getTodos)
+                .orElse(new ArrayList<>());
     }
 
     public TodoDto getTodo(String id) {
