@@ -1,0 +1,32 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: rest-client-practice
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:~/rest-client-practice
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  ## JPA Setting Info
+  jpa:
+    hibernate:
+      ddl-auto: create  # option type: create, create-drop, update, validate, none
+    properties:
+      hibernate:
+        diarect: org.hibernate.dialect.H2Dialect.
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
