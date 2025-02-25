@@ -16,7 +16,6 @@ public class RestClientConfig {
     @Bean
     public RestClient restClient() {
         return RestClient.builder()
-                .requestFactory(new HttpComponentsClientHttpRequestFactory())
                 .defaultStatusHandler(
                         HttpStatusCode::is4xxClientError,
                         (request, response) -> {
