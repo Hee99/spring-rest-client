@@ -18,7 +18,7 @@ public class TodoService {
     private final TodoApiClient todoApiClient;
 
     public List<TodoDto> getAllTodos() {
-        TodoResponseDto responseDto = todoApiClient.sendGet("/todos", TodoResponseDto.class);
+        TodoResponseDto responseDto = todoApiClient.sendGet("/todossss", TodoResponseDto.class);
         return Optional.ofNullable(responseDto)
                 .map(TodoResponseDto::getTodos)
                 .orElse(new ArrayList<>());

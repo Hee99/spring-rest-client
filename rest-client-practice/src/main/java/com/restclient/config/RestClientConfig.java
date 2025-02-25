@@ -5,8 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.server.ResponseStatusException;
 
 @Configuration
 public class RestClientConfig {
@@ -21,12 +21,14 @@ public class RestClientConfig {
                         (request, response) -> {
                             log.error("Client Error Code={}", response.getStatusCode());
                             log.error("Client Error Message={}", new String(response.getBody().readAllBytes()));
+                            throw new ResponseStatusException(response.getStatusCode(), new String(response.getBody().readAllBytes()));
                         })
                 .defaultStatusHandler(
                         HttpStatusCode::is5xxServerError,
                         (request, response) -> {
                             log.error("Server Error Code={}", response.getStatusCode());
                             log.error("Server Error Message={}", new String(response.getBody().readAllBytes()));
+                            throw new ResponseStatusException(response.getStatusCode(), new String(response.getBody().readAllBytes()));
                         })
                 .baseUrl("https://dummyjson.com")
                 .build();
