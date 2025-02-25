@@ -1,9 +1,9 @@
-package com.webclient.api.service;
+package com.restclient.api.service;
 
-import com.webclient.api.model.TodoDto;
-import com.webclient.api.model.TodoRequestDto;
-import com.webclient.api.model.TodoResponseDto;
-import com.webclient.config.TodoApiClient;
+import com.restclient.api.model.TodoDto;
+import com.restclient.api.model.TodoRequestDto;
+import com.restclient.api.model.TodoResponseDto;
+import com.restclient.config.TodoApiClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

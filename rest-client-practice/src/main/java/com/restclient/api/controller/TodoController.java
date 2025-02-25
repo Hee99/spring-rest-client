@@ -1,13 +1,8 @@
-package com.webclient.api.controller;
+package com.restclient.api.controller;
 
-import com.webclient.api.model.TodoDto;
-import com.webclient.api.model.TodoRequestDto;
-import com.webclient.api.service.TodoService;
+import com.restclient.api.model.TodoRequestDto;
+import com.restclient.api.service.TodoService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

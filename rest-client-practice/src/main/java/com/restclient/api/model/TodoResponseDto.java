@@ -1,4 +1,4 @@
-package com.webclient.api.model;
+package com.restclient.api.model;
 
 import lombok.Data;
 
